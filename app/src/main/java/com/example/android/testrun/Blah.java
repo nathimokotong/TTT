@@ -12,11 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -37,16 +40,17 @@ public class Blah extends AppCompatActivity {
     private StorageReference mStorageRef;
     ImageButton openButton;
     ImageButton BTNplay;
-    Button upload;
-    TextView path;
-    TextView foundpath;
+    ImageButton upload;
+    UploadTask uploadTask;
+    TextView foundpath,test;
     String songdisplay;
     String FilePath = "";
     private String[] mPath;
     private String[] mMusic;
-    MediaPlayer mediaplayer;
+    ProgressBar bar;
     MotherClass motherClass;
     Uri douwnloadURI;
+    int play = 0;
     private TextView tv;
 
     @Override
@@ -55,10 +59,16 @@ public class Blah extends AppCompatActivity {
         setContentView(R.layout.activity_upload);
         BTNplay = (ImageButton) findViewById(R.id.button3);
         openButton = (ImageButton) findViewById(R.id.button2);
-        upload = (Button) findViewById(R.id.btnupload);
-
+        upload = (ImageButton) findViewById(R.id.btnupload);
+        bar = (ProgressBar)findViewById(R.id.progressBar2);
         foundpath = (TextView) findViewById(R.id.pathfound);
-        mStorageRef = FirebaseStorage.getInstance().getReference();
+        test = (TextView)findViewById(R.id.txtAudioTest);
+        test.setVisibility(View.GONE);
+        bar.setVisibility(View.GONE);
+       BTNplay.setVisibility(View.GONE);
+      upload.setVisibility(View.GONE);
+
+motherClass = new MotherClass();
 
         openButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,31 +87,32 @@ public class Blah extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                upload.startAnimation(sideanim());
 
-                Uri file = Uri.fromFile(new File(FilePath));
-                StorageReference riversRef = mStorageRef.child(FilePath);
+                mStorageRef = FirebaseStorage.getInstance().getReference();
 
-                UploadTask uploadTask;
+                    Uri file = Uri.fromFile(new File(FilePath));
+            StorageReference riversRef = mStorageRef.child(FilePath);
 
-                uploadTask = riversRef.putFile(file);
-
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Blah.this,"can not upload song",Toast.LENGTH_SHORT).show();
-
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
+                  uploadTask = riversRef.putFile(file);
+                bar.setVisibility(View.VISIBLE);
+                 uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                     public void onFailure(@NonNull Exception e) {
+                       Toast.makeText(Blah.this,"can not upload song",Toast.LENGTH_SHORT).show();
+                         bar.setVisibility(View.GONE);
+                     }
+                   }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                       @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                        douwnloadURI = taskSnapshot.getDownloadUrl();
-                        Toast.makeText(Blah.this,taskSnapshot.getDownloadUrl().toString(),Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
-
+                         BTNplay.setVisibility(View.VISIBLE);
+                         douwnloadURI = taskSnapshot.getDownloadUrl();
+                          Toast.makeText(Blah.this,"Upload successful",Toast.LENGTH_SHORT).show();
+                        bar.setVisibility(View.GONE);
+                       test.setVisibility(View.VISIBLE);
+                   upload.setClickable(false);
+                      }
+                  });
 
             }
         });
@@ -111,30 +122,7 @@ public class Blah extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                try {
-
-
-                    String pathsss = douwnloadURI.toString();
-                    MediaPlayer mediaplayer = new MediaPlayer();
-                    mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mediaplayer.reset();
-                    mediaplayer.setDataSource(pathsss);
-                    mediaplayer.prepare();
-                    mediaplayer.start();
-
-                } catch (IllegalArgumentException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (SecurityException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (IllegalStateException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+             motherClass.playsong(douwnloadURI);
 
 
             }
@@ -159,6 +147,8 @@ public class Blah extends AppCompatActivity {
                     String picturePath = cursor.getString(columnIndex);
                     cursor.close();
                     FilePath = getFirebaseURIparth(picturePath);
+                    openButton.setClickable(false);
+                    upload.setVisibility(View.VISIBLE);
 
                 }
                 if (requestCode == RESULT_CANCELED) {
@@ -233,7 +223,7 @@ public class Blah extends AppCompatActivity {
                 uriPath = mPath[k].toString();
                 Toast.makeText(this, uriPath, Toast.LENGTH_SHORT).show();
                 songdisplay = songname;
-                blink();
+               blink();
                 break;
             }
 
@@ -253,7 +243,11 @@ public class Blah extends AppCompatActivity {
         animation.setRepeatMode(2);   // repeat animation (left to right, right to left )
         //animation.setFillAfter(true);
 
-        return animation;
+        Animation alpha =  AnimationUtils.loadAnimation(this, R.anim.left_to_right_slide);
+        alpha.setDuration(600);
+        alpha.setFillAfter(true);
+
+        return alpha;
     }
 
     private void blink(){

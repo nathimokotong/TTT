@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.AppIndex;
@@ -37,6 +38,7 @@ public class SignIN extends AppCompatActivity implements Button.OnClickListener 
     // [END declare_auth_listener]
     private GoogleApiClient mGoogleApiClient;
     Button signButton;
+    ProgressBar bar;
 
 
     @Override
@@ -44,6 +46,8 @@ public class SignIN extends AppCompatActivity implements Button.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        bar = (ProgressBar)findViewById(R.id.progressBar2);
+        bar.setVisibility(View.GONE);
         signButton = (Button)findViewById(R.id.googlebtnlog);
         signButton.setOnClickListener(this);
 
@@ -80,6 +84,7 @@ public class SignIN extends AppCompatActivity implements Button.OnClickListener 
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
+                bar.setVisibility(View.VISIBLE);
             } else {
                 // Google Sign In failed, update UI appropriately
                 // [START_EXCLUDE]

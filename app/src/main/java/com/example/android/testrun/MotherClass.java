@@ -2,10 +2,14 @@ package com.example.android.testrun;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.io.IOException;
 
 /**
  * Created by Codetribe on 2016/11/25.
@@ -48,7 +52,36 @@ public class MotherClass {
     }
 
 
+    public void playsong(Uri pathofsong)
+    {
+        try {
 
+
+            String pathsss = pathofsong.toString();
+            MediaPlayer mediaplayer = new MediaPlayer();
+            mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mediaplayer.reset();
+            mediaplayer.setDataSource(pathsss);
+            mediaplayer.prepare();
+            mediaplayer.start();
+          //  play = 1;
+
+
+        } catch (IllegalArgumentException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalStateException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
 
 
 }
