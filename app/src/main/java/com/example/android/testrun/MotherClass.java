@@ -1,10 +1,15 @@
 package com.example.android.testrun;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.CountDownTimer;
+import android.support.v7.app.AlertDialog;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -17,29 +22,17 @@ import java.io.IOException;
 
 public class MotherClass {
 
-    String FilePath;
-    FirebaseStorage firebaseStorage;
-    String pathstr;
-    String Songpath;
-    private String[] mPath;
-    private String[] mMusic;
-    MediaPlayer mediaplayer;
+
+    String gnr;
     private int PICKFILE_RESULT_CODE;
-    private StorageReference mStorageRef;
+
     Activity activity;
 
     public  MotherClass()
     {
 
-        String FilePath = "";
-        FirebaseStorage firebaseStorage;
-        String pathstr = "fsgjbv";
-        String Songpath = "?";
-        mPath = new String[]{};
-         mMusic = new String[]{};
-        MediaPlayer mediaplayer;
         PICKFILE_RESULT_CODE = 1001 ;
-        StorageReference mStorageRef;
+
 
     }
 
@@ -52,19 +45,34 @@ public class MotherClass {
     }
 
 
+
     public void playsong(Uri pathofsong)
     {
+
+
         try {
+            CountDownTimer timer = null;
 
-
-            String pathsss = pathofsong.toString();
-            MediaPlayer mediaplayer = new MediaPlayer();
+            final String pathsss = pathofsong.toString();
+            final MediaPlayer mediaplayer = new MediaPlayer();
             mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mediaplayer.reset();
             mediaplayer.setDataSource(pathsss);
             mediaplayer.prepare();
             mediaplayer.start();
-          //  play = 1;
+
+            timer = new CountDownTimer(20000,1000) {
+                @Override
+                public void onTick(long l) {
+
+                }
+                @Override
+                public void onFinish()
+                {
+                    mediaplayer.stop();
+                }
+            }.start();
+
 
 
         } catch (IllegalArgumentException e) {
@@ -82,6 +90,9 @@ public class MotherClass {
         }
 
     }
+
+
+
 
 
 }

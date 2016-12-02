@@ -48,6 +48,13 @@ tools:context="com.example.android.testrun.MainActivity"
 
 
     <TextView
+        android:text="Upload song"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtupload" />
+
+    <TextView
         android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -86,6 +93,13 @@ tools:context="com.example.android.testrun.MainActivity"
         android:layout_gravity="center"
         android:layout_below="@+id/button3"
         android:layout_alignEnd="@+id/txtAudioTest" />
+
+    <Button
+        android:text="Add new song"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
+        android:id="@+id/btnAddnew" />
 
 
 </LinearLayout>

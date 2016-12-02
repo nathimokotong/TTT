@@ -9,7 +9,7 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="245dp"
+        android:layout_height="256dp"
         android:id="@+id/MyappBar"
         android:fitsSystemWindows="true"
         >
@@ -42,12 +42,6 @@
 
             </android.support.v7.widget.Toolbar>
 
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/usernameTxt" />
-
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -55,57 +49,62 @@
     </android.support.design.widget.AppBarLayout>
 
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/nestedScrollView2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="24dp"
+            android:weightSum="1">
+
+
+            <Button
+                android:id="@+id/BtnMusicGal"
+                android:layout_width="match_parent"
+                android:layout_height="92dp"
+                android:text="@string/music_menu"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorgray"
+                android:background="@color/cardview_dark_background"
+                android:layout_weight="0.65" />
+
+            <Button
+                android:id="@+id/Btnupload"
+                android:layout_width="match_parent"
+                android:layout_height="92dp"
+                android:text="@string/music_upload"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorgray"
+                android:layout_weight="0.65" />
+
+            <Button
+                android:id="@+id/Btnrating"
+                android:layout_width="match_parent"
+                android:layout_height="92dp"
+                android:textColor="@color/colorgray"
+                android:text="@string/music_rating"
+                android:layout_centerHorizontal="true"
+                android:background="@color/cardview_dark_background"
+                android:layout_weight="0.65" />
+
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_gravity="center_vertical|left"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        app:layout_anchor="@+id/nestedScrollView2"
+        app:layout_anchorGravity="top|right" />
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/bottom_sheet_behavior"
-        >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="24dp"
-        android:weightSum="1">
-
-
-        <Button
-        android:id="@+id/BtnMusicGal"
-        android:layout_width="match_parent"
-        android:layout_height="92dp"
-            android:text="@string/music_menu"
-        android:layout_centerHorizontal="true"
-            android:textColor="@color/colorgray"
-        android:background="@color/cardview_dark_background"
-            android:layout_weight="0.65" />
-
-        <Button
-            android:id="@+id/Btnupload"
-            android:layout_width="match_parent"
-            android:layout_height="92dp"
-            android:text="@string/music_upload"
-            android:layout_centerHorizontal="true"
-            android:background="@color/colorgray"
-            android:layout_weight="0.65" />
-
-        <Button
-            android:id="@+id/Btnrating"
-            android:layout_width="match_parent"
-            android:layout_height="92dp"
-            android:textColor="@color/colorgray"
-            android:text="@string/music_rating"
-            android:layout_centerHorizontal="true"
-            android:background="@color/cardview_dark_background"
-            android:layout_weight="0.65" />
-
-
-    </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

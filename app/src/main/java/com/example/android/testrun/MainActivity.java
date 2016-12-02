@@ -136,7 +136,7 @@ TextView username;
             @Override
             public void onClick(View view) {
 
-                MusicUplbtn.startAnimation(clic);
+                Musicbtn.startAnimation(clic);
                 timer = new CountDownTimer(3000,1000) {
                     @Override
                     public void onTick(long l) {

@@ -1,13 +1,16 @@
 package com.example.android.testrun;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,9 +19,12 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,15 +40,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Blah extends AppCompatActivity {
+public class Blah extends AppCompatActivity  {
 
     private static final int PICKFILE_RESULT_CODE = 1001;
     private StorageReference mStorageRef;
     ImageButton openButton;
     ImageButton BTNplay;
     ImageButton upload;
+    Button addnew;
     UploadTask uploadTask;
-    TextView foundpath,test;
+    TextView foundpath, test, uploadtxt;
     String songdisplay;
     String FilePath = "";
     private String[] mPath;
@@ -50,8 +57,8 @@ public class Blah extends AppCompatActivity {
     ProgressBar bar;
     MotherClass motherClass;
     Uri douwnloadURI;
-    int play = 0;
-    private TextView tv;
+    CountDownTimer timer = null;
+    String cat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,15 +67,20 @@ public class Blah extends AppCompatActivity {
         BTNplay = (ImageButton) findViewById(R.id.button3);
         openButton = (ImageButton) findViewById(R.id.button2);
         upload = (ImageButton) findViewById(R.id.btnupload);
-        bar = (ProgressBar)findViewById(R.id.progressBar2);
+        bar = (ProgressBar) findViewById(R.id.progressBar2);
         foundpath = (TextView) findViewById(R.id.pathfound);
-        test = (TextView)findViewById(R.id.txtAudioTest);
+        uploadtxt = (TextView)findViewById(R.id.txtupload);
+        addnew = (Button)findViewById(R.id.btnAddnew);
+        test = (TextView) findViewById(R.id.txtAudioTest);
         test.setVisibility(View.GONE);
         bar.setVisibility(View.GONE);
-       BTNplay.setVisibility(View.GONE);
-      upload.setVisibility(View.GONE);
+        uploadtxt.setVisibility(View.GONE);
+        BTNplay.setVisibility(View.GONE);
+        upload.setVisibility(View.GONE);
 
-motherClass = new MotherClass();
+        motherClass = new MotherClass();
+
+
 
         openButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,28 +103,28 @@ motherClass = new MotherClass();
 
                 mStorageRef = FirebaseStorage.getInstance().getReference();
 
-                    Uri file = Uri.fromFile(new File(FilePath));
-            StorageReference riversRef = mStorageRef.child(FilePath);
+                Uri file = Uri.fromFile(new File(FilePath));
+                StorageReference riversRef = mStorageRef.child(FilePath);
 
-                  uploadTask = riversRef.putFile(file);
+                uploadTask = riversRef.putFile(file);
                 bar.setVisibility(View.VISIBLE);
-                 uploadTask.addOnFailureListener(new OnFailureListener() {
-                        @Override
-                     public void onFailure(@NonNull Exception e) {
-                       Toast.makeText(Blah.this,"can not upload song",Toast.LENGTH_SHORT).show();
-                         bar.setVisibility(View.GONE);
-                     }
-                   }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                       @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                         BTNplay.setVisibility(View.VISIBLE);
-                         douwnloadURI = taskSnapshot.getDownloadUrl();
-                          Toast.makeText(Blah.this,"Upload successful",Toast.LENGTH_SHORT).show();
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Blah.this, "can not upload song", Toast.LENGTH_SHORT).show();
                         bar.setVisibility(View.GONE);
-                       test.setVisibility(View.VISIBLE);
-                   upload.setClickable(false);
-                      }
-                  });
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        BTNplay.setVisibility(View.VISIBLE);
+                        douwnloadURI = taskSnapshot.getDownloadUrl();
+                        Toast.makeText(Blah.this, "Upload successful", Toast.LENGTH_SHORT).show();
+                        bar.setVisibility(View.GONE);
+                        test.setVisibility(View.VISIBLE);
+                        upload.setClickable(false);
+                    }
+                });
 
             }
         });
@@ -122,8 +134,39 @@ motherClass = new MotherClass();
             @Override
             public void onClick(View view) {
 
-             motherClass.playsong(douwnloadURI);
 
+
+                Toast.makeText(Blah.this,"Review will stop in 20 seconds",Toast.LENGTH_SHORT).show();
+                    BTNplay.setImageResource(R.drawable.ic_pause_black_24dp);
+
+                    motherClass.playsong(douwnloadURI);
+
+                timer = new CountDownTimer(20000,1000) {
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+                    @Override
+                    public void onFinish() {
+                        BTNplay.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+                    }
+                }.start();
+
+
+            }
+        });
+
+
+        addnew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                test.setVisibility(View.GONE);
+                bar.setVisibility(View.GONE);
+                BTNplay.setVisibility(View.GONE);
+                upload.setVisibility(View.GONE);
+                uploadtxt.setVisibility(View.GONE);
+                openButton.setClickable(true);
+                songdisplay = "";
 
             }
         });
@@ -140,16 +183,16 @@ motherClass = new MotherClass();
             case PICKFILE_RESULT_CODE:
                 if (resultCode == RESULT_OK) {
 
+                    setCat();
                     Cursor cursor = getContentResolver().query(selectedImageUri, projection, null, null, null);
                     cursor.moveToFirst();
-
                     int columnIndex = cursor.getColumnIndex(projection[0]);
                     String picturePath = cursor.getString(columnIndex);
                     cursor.close();
                     FilePath = getFirebaseURIparth(picturePath);
                     openButton.setClickable(false);
                     upload.setVisibility(View.VISIBLE);
-
+                    uploadtxt.setVisibility(View.VISIBLE);
                 }
                 if (requestCode == RESULT_CANCELED) {
 
@@ -221,9 +264,9 @@ motherClass = new MotherClass();
         for (int k = 0; k < i; k++) {
             if (mMusic[k].equals(songname)) {
                 uriPath = mPath[k].toString();
-                Toast.makeText(this, uriPath, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Song selected", Toast.LENGTH_SHORT).show();
                 songdisplay = songname;
-               blink();
+                blink();
                 break;
             }
 
@@ -232,10 +275,30 @@ motherClass = new MotherClass();
         return uriPath;
     }
 
-//----------------------------------------------ANIMATION------------------------------------------
-    //button animation
-    private Animation sideanim()
+
+    private void setCat()
     {
+        final String[] names = {"Kwaito" ,"Hip Hop" ,"RnB" ,"House" ,"Jazz and Soul" ,"Mgqashiyo and Isicathamiya" ,"Rock" ,"Reggae" ,"Afrikaans music" ,"Gospel" ,"traditional"};
+
+
+        final AlertDialog.Builder builder1 = new AlertDialog.Builder(Blah.this);
+        builder1.setTitle("Genre");
+        builder1.setItems(names, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                cat = names[i];
+
+            }
+        });
+
+        builder1.show();
+    }
+
+
+    //----------------------------------------------ANIMATION------------------------------------------
+    //button animation
+    private Animation sideanim() {
         TranslateAnimation animation = new TranslateAnimation(0.0f, 400.0f,
                 0.0f, 0.0f);          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
         animation.setDuration(5000);  // animation duration
@@ -243,28 +306,31 @@ motherClass = new MotherClass();
         animation.setRepeatMode(2);   // repeat animation (left to right, right to left )
         //animation.setFillAfter(true);
 
-        Animation alpha =  AnimationUtils.loadAnimation(this, R.anim.left_to_right_slide);
+        Animation alpha = AnimationUtils.loadAnimation(this, R.anim.left_to_right_slide);
         alpha.setDuration(600);
         alpha.setFillAfter(true);
 
         return alpha;
     }
 
-    private void blink(){
+    private void blink() {
         final Handler handler = new Handler();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 int timeToBlink = 1000;    //in milissegunds
-                try{Thread.sleep(timeToBlink);}catch (Exception e) {}
+                try {
+                    Thread.sleep(timeToBlink);
+                } catch (Exception e) {
+                }
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
                         TextView txt = (TextView) findViewById(R.id.songdisplay);
                         txt.setText(songdisplay);
-                        if(txt.getVisibility() == View.VISIBLE){
+                        if (txt.getVisibility() == View.VISIBLE) {
                             txt.setVisibility(View.INVISIBLE);
-                        }else{
+                        } else {
                             txt.setVisibility(View.VISIBLE);
                         }
                         blink();
