@@ -228,11 +228,11 @@ TextView username;
     private void updateUI(FirebaseUser user) {
 
         if (user != null) {
-            username = (TextView)findViewById(R.id.usernameTxt);
+         //   username = (TextView)findViewById(R.id.usernameTxt);
             username.setText(user.getDisplayName());
         } else {
 
-            findViewById(R.id.usernameTxt).setVisibility(View.VISIBLE);
+           // findViewById(R.id.usernameTxt).setVisibility(View.VISIBLE);
 
         }
     }
