@@ -29,7 +29,7 @@
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
                 app:layout_collapseMode="pin"
-                android:background="@drawable/music"
+                android:background="@drawable/mylogo"
                 />
 
             <android.support.v7.widget.Toolbar
@@ -42,69 +42,70 @@
             </android.support.v7.widget.Toolbar>
 
 
-
-
         </android.support.design.widget.CollapsingToolbarLayout>
 
 
     </android.support.design.widget.AppBarLayout>
 
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/bottom_sheet_behavior"
-        android:id="@+id/nestedScrollView">
 
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingTop="24dp"
-            android:weightSum="1">
+            android:background="@color/colorgray"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:weightSum="1"
+            android:id="@+id/linearLayout2">
 
+
+            <Button
+                android:id="@+id/BtnSign"
+                android:layout_width="170dp"
+                android:layout_height="92dp"
+                android:elevation="10dp"
+                android:drawableTop="@drawable/signoutbtn"
+                android:text="@string/sign_out"
+                android:background="@color/colorgray"
+                android:layout_alignTop="@+id/Btnrating"
+                android:layout_alignParentEnd="true" />
 
             <Button
                 android:id="@+id/BtnMusicGal"
-                android:layout_width="match_parent"
+                android:elevation="10dp"
+                android:layout_width="168dp"
                 android:layout_height="92dp"
+                android:drawableTop="@drawable/musicgalbtn"
                 android:text="@string/music_menu"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/colorgray"
-                android:background="@color/cardview_dark_background"
-                android:layout_weight="0.65" />
+                android:background="@color/colorgray"
+                android:layout_alignTop="@+id/Btnupload"
+                android:layout_alignParentEnd="true" />
 
             <Button
                 android:id="@+id/Btnupload"
-                android:layout_width="match_parent"
+                android:layout_width="170dp"
                 android:layout_height="92dp"
+                android:drawableTop="@drawable/uploadmusicbtn"
                 android:text="@string/music_upload"
-                android:layout_centerHorizontal="true"
+                android:elevation="10dp"
                 android:background="@color/colorgray"
-                android:layout_weight="0.65" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
 
             <Button
                 android:id="@+id/Btnrating"
-                android:layout_width="match_parent"
+                android:layout_width="172dp"
                 android:layout_height="92dp"
-                android:textColor="@color/colorgray"
+                android:elevation="10dp"
+                android:drawableTop="@drawable/topbtn"
+                android:background="@color/colorgray"
                 android:text="@string/music_rating"
-                android:layout_centerHorizontal="true"
-                android:background="@color/cardview_dark_background"
-                android:layout_weight="0.65" />
+                android:layout_marginTop="38dp"
+                android:layout_below="@+id/Btnupload"
+                android:layout_alignEnd="@+id/Btnupload" />
 
-
-        </LinearLayout>
-
-    </android.support.v4.widget.NestedScrollView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        app:srcCompat="@android:drawable/btn_dialog"
-        app:layout_anchor="@+id/nestedScrollView"
-        app:layout_anchorGravity="center_vertical|right" />
+        </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
