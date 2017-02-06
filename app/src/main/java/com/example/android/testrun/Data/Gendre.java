@@ -2,12 +2,15 @@ package com.example.android.testrun.Data;
 
 import android.net.Uri;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 import java.io.Serializable;
 
 /**
  * Created by Codetribe on 2016/12/02.
  */
 
+@IgnoreExtraProperties //avoids this error Can't convert object of type java.lang.String to type object
 public class Gendre implements Serializable {
 
     private String songName;
@@ -17,6 +20,10 @@ private String timestamp;
     private String dislikes;
 
 
+    public Gendre()
+    {
+
+    }
 
 //we can have two constractors
 
@@ -44,6 +51,26 @@ private String timestamp;
         downloadu = downloaduri;
         timestamp = time;
 
+    }
+
+    public void setSongName(String songName) {
+        this.songName = songName;
+    }
+
+    public void setDownloadu(String downloadu) {
+        this.downloadu = downloadu;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setDislikes(String dislikes) {
+        this.dislikes = dislikes;
     }
 
     public String getSongName()

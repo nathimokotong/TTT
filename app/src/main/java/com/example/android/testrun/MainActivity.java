@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements
                     }
                     @Override
                     public void onFinish() {
-                        Intent intent = new Intent(MainActivity.this,MusicGallery.class);
+                        Intent intent = new Intent(MainActivity.this,GalleryMusic.class);
                        startActivity(intent);
                     }
                 }.start();

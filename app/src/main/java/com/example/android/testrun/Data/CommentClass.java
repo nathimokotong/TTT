@@ -10,6 +10,12 @@ public class CommentClass {
     String message;
 
 
+    public CommentClass()
+    {
+
+    }
+
+
     public CommentClass(String u , String m)
     {
         user = u;
