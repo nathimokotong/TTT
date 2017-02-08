@@ -453,7 +453,7 @@ public void onBackPressed()
 { super.onBackPressed(); // optional //you may put your intent here, putExtra, startActivity
 
     finish();
-    startActivity(getIntent());
+  //  startActivity(getIntent());
  }
 
 }

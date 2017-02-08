@@ -215,13 +215,13 @@ public class MotherClass {
 
 
     //write to database
-public void writeCat(String gen, String songnm, Uri downloaduri,String time)
+public void writeCat(String gen, String songnm, Uri downloaduri,String time,String name)
 {
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference();
     DatabaseReference usersRef = ref.child("Genre").child(gen);
-    usersRef.push().setValue(new Gendre(songnm,downloaduri.toString(),time));
+    usersRef.push().setValue(new Gendre(songnm,downloaduri.toString(),time,name,"0"));
 
 }
 

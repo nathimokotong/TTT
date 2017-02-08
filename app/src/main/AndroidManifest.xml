@@ -55,7 +55,11 @@
             android:name=".Comment"
             android:label="@string/title_activity_comment"
             android:screenOrientation="portrait" />
-        <activity android:name=".GalleryMusic"
+        <activity
+            android:name=".GalleryMusic"
+            android:label="Music Gallery"
+            android:screenOrientation="portrait" />
+        <activity android:name=".GendreActivity"
             android:label="Music Gallery"
             android:screenOrientation="portrait"
             ></activity>

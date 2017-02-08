@@ -18,6 +18,7 @@ public class Gendre implements Serializable {
 private String Email;
 private String timestamp;
     private String dislikes;
+    private String artist;
 
 
     public Gendre()
@@ -34,12 +35,14 @@ private String timestamp;
 
     }
 
-    //_____________________first
-    public Gendre(String d, String m, String t)
+    //_____________________first for genre
+    public Gendre(String d, String m, String t,String n,String b)
     {
         songName = d;
         downloadu = m;
         timestamp = t;
+        artist = n;
+        dislikes = b;
 
     }
     //_____________________secound

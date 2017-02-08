@@ -12,7 +12,6 @@
     tools:context="com.example.android.testrun.GalleryMusic">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,70 +20,70 @@
 
 
         <Button
-            android:text="Button"
+            android:text="Kwaito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button18" />
+            android:id="@+id/Kwaito" />
 
         <Button
-            android:text="Button"
+            android:text="Hip Hop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button17" />
+            android:id="@+id/Hipid" />
 
         <Button
-            android:text="Button"
+            android:text="RnB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button16" />
+            android:id="@+id/RnBid" />
 
         <Button
-            android:text="Button"
+            android:text="House"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button15" />
+            android:id="@+id/Houseid" />
 
         <Button
-            android:text="Button"
+            android:text="Jazz and Soul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button9" />
+            android:id="@+id/Jazzid" />
 
         <Button
-            android:text="Button"
+            android:text="Mgqashiyo and Isicathamiya"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button10" />
+            android:id="@+id/Mgqashiyoid" />
 
         <Button
-            android:text="Button"
+            android:text="Rock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button13" />
+            android:id="@+id/Rockid" />
 
         <Button
-            android:text="Button"
+            android:text="Reggae"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button14" />
+            android:id="@+id/Reggaeid" />
 
         <Button
-            android:text="Button"
+            android:text="Afrikaans music"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button12" />
+            android:id="@+id/Afrikaansid" />
 
         <Button
-            android:text="Button"
+            android:text="Gospel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button11" />
+            android:id="@+id/Gospelid" />
 
         <Button
-            android:text="Button"
+            android:text="traditional"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button8" />
+            android:id="@+id/traditionalid" />
 
 
     </LinearLayout>

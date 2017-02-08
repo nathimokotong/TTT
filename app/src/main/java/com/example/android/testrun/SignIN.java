@@ -127,6 +127,7 @@ public class SignIN extends AppCompatActivity implements Button.OnClickListener 
                         {
                             Intent intent =  new Intent(SignIN.this,MainActivity.class);
                             startActivity(intent);
+                            finish();
                         }
 
                         // [START_EXCLUDE]
