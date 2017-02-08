@@ -20,7 +20,9 @@ private String timestamp;
     private String dislikes;
     private String artist;
 
-
+/*("Songtitle",model.getSongName());
+                                    intent.putExtra("Path",model.getDownloadu());
+                                    intent.putExtra("Times",model.getTimestamp());*/
     public Gendre()
     {
 
@@ -54,6 +56,14 @@ private String timestamp;
         downloadu = downloaduri;
         timestamp = time;
 
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 
     public void setSongName(String songName) {
