@@ -141,4 +141,12 @@ public class GalleryMusic extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed()
+    { super.onBackPressed(); // optional //you may put your intent here, putExtra, startActivity
+        Intent intent = new Intent(GalleryMusic.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

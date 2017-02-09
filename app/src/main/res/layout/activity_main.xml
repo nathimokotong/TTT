@@ -48,65 +48,131 @@
     </android.support.design.widget.AppBarLayout>
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="24dp"
+        android:background="@drawable/bacmusi"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:weightSum="1"
+        android:id="@+id/linearLayout2">
 
 
-        <RelativeLayout
+
+
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="27dp">
+
+            <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="24dp"
-            android:background="@color/colorgray"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:weightSum="1"
-            android:id="@+id/linearLayout2">
+            tools:context="com.example.android.courtcounter.MainActivity">
 
 
-            <Button
-                android:id="@+id/BtnSign"
-                android:layout_width="170dp"
-                android:layout_height="92dp"
-                android:elevation="10dp"
-                android:drawableTop="@drawable/signoutbtn"
-                android:text="@string/sign_out"
-                android:background="@android:color/transparent"
-                android:layout_alignTop="@+id/Btnrating"
-                android:layout_alignParentEnd="true" />
-
-            <Button
-                android:id="@+id/BtnMusicGal"
-                android:elevation="10dp"
-                android:layout_width="168dp"
-                android:layout_height="92dp"
-                android:drawableTop="@drawable/musicgalbtn"
-                android:text="@string/music_menu"
-                android:background="@android:color/transparent"
-                android:layout_alignTop="@+id/Btnupload"
-                android:layout_alignParentEnd="true" />
-
-            <Button
-                android:id="@+id/Btnrating"
-                android:layout_width="172dp"
-                android:layout_height="92dp"
-                android:elevation="10dp"
-                android:drawableTop="@drawable/topbtn"
-                android:background="@android:color/transparent"
-                android:text="@string/music_rating"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="41dp" />
-
-            <Button
+                <Button
                 android:id="@+id/Btnupload"
                 android:layout_width="170dp"
                 android:layout_height="92dp"
                 android:drawableTop="@drawable/uploadmusicbtn"
                 android:text="@string/music_upload"
+                    android:textColor="@color/colorwhite"
                 android:elevation="10dp"
                 android:background="@android:color/transparent"
                 android:layout_alignParentTop="true"
                 android:layout_alignEnd="@+id/Btnrating"
-                android:layout_marginTop="12dp" />
+                android:layout_marginTop="1dp"
+                    android:layout_weight="0.58" />
 
-        </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginTop="19dp"
+                    android:id="@+id/view" />
+
+                <Button
+                    android:id="@+id/Btnrating"
+                    android:layout_width="170dp"
+                    android:layout_height="92dp"
+                    android:elevation="10dp"
+                    android:textColor="@color/colorwhite"
+                    android:drawableTop="@drawable/topbtn"
+                    android:background="@android:color/transparent"
+                    android:text="@string/music_rating"
+                    android:layout_marginTop="25dp"
+                    android:layout_weight="1"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                   />
+        </LinearLayout>
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="16dp"
+
+                android:id="@+id/view2" />
+
+            <LinearLayout
+                android:layout_width="188dp"
+                android:layout_height="236dp"
+                android:orientation="vertical"
+
+                tools:context="MainActivity">
+
+                <Button
+                    android:id="@+id/BtnMusicGal"
+                    android:elevation="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="92dp"
+                    android:drawableTop="@drawable/musicgalbtn"
+                    android:text="@string/music_menu"
+                    android:textColor="@color/colorwhite"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_weight="1" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginTop="16dp"
+                    />
+
+                <Button
+                    android:id="@+id/BtnSign"
+                    android:layout_width="match_parent"
+                    android:layout_height="92dp"
+                    android:elevation="10dp"
+                    android:drawableTop="@drawable/signoutbtn"
+                    android:text="@string/sign_out"
+                    android:textColor="@color/colorwhite"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="25dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                   />
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

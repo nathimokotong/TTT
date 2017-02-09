@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/colorgray"
+    android:background="@drawable/bacmusi"
     tools:context="com.example.android.testrun.GalleryMusic">
 
 

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorgray"
+    android:background="@drawable/bacmusi"
     tools:context="com.example.android.testrun.MainActivity"
     android:weightSum="1">
 
@@ -31,6 +31,7 @@
         android:text="Open Music gallary"
         android:layout_marginTop="10dp"
         android:id="@+id/pathfound"
+        android:textColor="@color/colorwhite"
         android:layout_below="@+id/button2"
         android:layout_gravity="center"  />
 
@@ -52,6 +53,7 @@
         android:text="Upload song"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/colorwhite"
         android:layout_height="wrap_content"
         android:id="@+id/txtupload" />
 
@@ -71,6 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtAudioTest"
+        android:textColor="@color/colorwhite"
         android:layout_marginTop="73dp"
         android:layout_below="@+id/songdisplay"
         android:layout_gravity="center" />
