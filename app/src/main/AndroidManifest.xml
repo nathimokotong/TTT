@@ -7,6 +7,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <!-- //new -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/mylogofront"
@@ -59,10 +67,11 @@
             android:name=".GalleryMusic"
             android:label="Music Gallery"
             android:screenOrientation="portrait" />
-        <activity android:name=".GendreActivity"
+        <activity
+            android:name=".GendreActivity"
             android:label="Music Gallery"
-            android:screenOrientation="portrait"
-            ></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".ContactArtist"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.example.android.testrun.Data;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -9,7 +10,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewCompat;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.view.View;
 import android.view.animation.OvershootInterpolator;
+import android.widget.Button;
 
 //import com.example.android.testrun.MyBounceInterpolator;
 import com.google.firebase.database.DatabaseReference;
@@ -44,7 +47,7 @@ public class MotherClass {
     }
 
 
-    public void playsong(Uri pathofsong, int t)
+    public void playsong(Uri pathofsong)
     {
 
 
@@ -60,40 +63,6 @@ public class MotherClass {
             mediaplayer.start();
 
             final int dur = mediaplayer.getDuration();
-
-            if (t >=  20000)
-            {   timer = new CountDownTimer(20000,1000) {
-                @Override
-                public void onTick(long l) {
-
-                }
-                @Override
-                public void onFinish()
-                {
-                    mediaplayer.stop();
-                }
-            }.start();
-            }
-
-            if(t < 20000)
-            {
-                int sec = (int) ((t / 1000) % 60);
-                sec = sec * 1000;
-                timer = new CountDownTimer(sec,1000) {
-                    @Override
-                    public void onTick(long l) {
-
-                    }
-                    @Override
-                    public void onFinish()
-                    {
-                        mediaplayer.stop();
-                    }
-                }.start();
-
-            }
-
-
 
 
         } catch (IllegalArgumentException e) {
@@ -112,22 +81,68 @@ public class MotherClass {
 
     }
 
-    public void songplaying(String pathofsong)
+    public void playsongs(String pathofsong,Boolean isPlay)
     {
-
+        final MediaPlayer mediaplayer = new MediaPlayer();
 
         try {
             CountDownTimer timer = null;
 
-            final String pathsss = pathofsong.toString();
-            final MediaPlayer mediaplayer = new MediaPlayer();
+
+
             mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mediaplayer.reset();
-            mediaplayer.setDataSource(pathsss);
+            mediaplayer.setDataSource(pathofsong);
             mediaplayer.prepare();
             mediaplayer.start();
 
-            final int dur = mediaplayer.getDuration();
+
+        } catch (IllegalArgumentException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalStateException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+
+        if(isPlay == true)
+        {
+            mediaplayer.stop();
+        }
+
+
+    }
+
+
+    public void songplaying(String pathofsong, Button button, Drawable drawable1)
+    {
+        final MediaPlayer mediaplayer = new MediaPlayer();
+
+        try {
+
+            if(!mediaplayer.isPlaying())
+            {
+            button.setBackground(drawable1);
+            }
+            else
+            {
+
+                final String pathsss = pathofsong.toString();
+                mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                mediaplayer.reset();
+                mediaplayer.setDataSource(pathsss);
+                mediaplayer.prepare();
+                mediaplayer.start();
+            }
+
+
 
 
         } catch (IllegalArgumentException e) {
@@ -234,6 +249,17 @@ public void writeCat(String gen, String songnm, Uri downloaduri,String time,Stri
         DatabaseReference usersRef = ref.child("Artist").child(name);
         usersRef.push().setValue(new Gendre(email,songnm,downloaduri.toString(),likes));
 
+
+    }
+
+
+    public void contactInfo(String name,String email)
+    {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference();
+
+        DatabaseReference usersReff = ref.child("Contacts").child("Artists");
+        usersReff.push().setValue(new Contacts(email,name));
     }
 
     public void writeComments(String songname)
@@ -242,6 +268,10 @@ public void writeCat(String gen, String songnm, Uri downloaduri,String time,Stri
         DatabaseReference ref = database.getReference();
         DatabaseReference usersRef = ref.child("Comments").child(songname);
         usersRef.push().setValue(new Gendre(songname));
+
+
+
+
     }
 
 

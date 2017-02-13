@@ -105,7 +105,7 @@
                     android:layout_height="92dp"
                     android:elevation="10dp"
                     android:textColor="@color/colorwhite"
-                    android:drawableTop="@drawable/topbtn"
+                    android:drawableTop="@drawable/artists_24dp"
                     android:background="@android:color/transparent"
                     android:text="@string/music_rating"
                     android:layout_marginTop="25dp"
@@ -147,7 +147,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="5dp"
                     android:background="@android:color/darker_gray"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="17dp"
                     />
 
                 <Button

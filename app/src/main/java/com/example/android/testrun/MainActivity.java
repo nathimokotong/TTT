@@ -448,12 +448,5 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     //___________________________________________________
-@Override
-public void onBackPressed()
-{ super.onBackPressed(); // optional //you may put your intent here, putExtra, startActivity
-
-    finish();
-  //  startActivity(getIntent());
- }
 
 }

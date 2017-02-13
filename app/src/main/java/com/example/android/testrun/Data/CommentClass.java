@@ -8,6 +8,8 @@ public class CommentClass {
 
     String user;
     String message;
+    String timestamp;
+
 
 
     public CommentClass()
@@ -16,10 +18,19 @@ public class CommentClass {
     }
 
 
-    public CommentClass(String u , String m)
+    public CommentClass(String u , String m ,String t)
     {
         user = u;
         message = m;
+        timestamp = t;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getUser() {
