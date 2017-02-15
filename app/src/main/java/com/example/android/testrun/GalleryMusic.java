@@ -124,7 +124,7 @@ public class GalleryMusic extends AppCompatActivity {
                 btnGospel.setClickable(false);
                 btntraditional.setClickable(false);
 
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 
@@ -157,7 +157,7 @@ public class GalleryMusic extends AppCompatActivity {
                 btnGospel.setClickable(false);
                 btntraditional.setClickable(false);
 
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 
@@ -191,7 +191,7 @@ public class GalleryMusic extends AppCompatActivity {
                 btntraditional.setClickable(false);
                 btnHouse.setClickable(false);
 
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 
@@ -227,7 +227,7 @@ public class GalleryMusic extends AppCompatActivity {
                 btnGospel.setClickable(false);
                 btntraditional.setClickable(false);
 
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 
@@ -262,7 +262,7 @@ public class GalleryMusic extends AppCompatActivity {
                 btnGospel.setClickable(false);
                 btntraditional.setClickable(false);
 
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 
@@ -296,7 +296,7 @@ public class GalleryMusic extends AppCompatActivity {
                 btnGospel.setClickable(false);
                 btntraditional.setClickable(false);
 
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 
@@ -332,7 +332,7 @@ public class GalleryMusic extends AppCompatActivity {
                 btnGospel.setClickable(false);
                 btntraditional.setClickable(false);
 
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 
@@ -367,7 +367,7 @@ public class GalleryMusic extends AppCompatActivity {
                 btnGospel.setClickable(false);
                 btntraditional.setClickable(false);
 
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 
@@ -403,7 +403,7 @@ public class GalleryMusic extends AppCompatActivity {
                 btnGospel.setClickable(false);
                 btntraditional.setClickable(false);
 
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 
@@ -438,7 +438,7 @@ public class GalleryMusic extends AppCompatActivity {
                 btntraditional.startAnimation(clic);
                 btntraditional.setClickable(false);
 
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 

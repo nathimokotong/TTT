@@ -13,6 +13,7 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 //import com.example.android.testrun.MyBounceInterpolator;
 import com.google.firebase.database.DatabaseReference;
@@ -81,42 +82,43 @@ public class MotherClass {
 
     }
 
-    public void playsongs(String pathofsong,Boolean isPlay)
+    public void playsongs(String pathofsong, ImageButton isPlay)
     {
         final MediaPlayer mediaplayer = new MediaPlayer();
 
-        try {
-            CountDownTimer timer = null;
+        isPlay.setSelected(!isPlay.isSelected());
 
-
-
-            mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mediaplayer.reset();
-            mediaplayer.setDataSource(pathofsong);
-            mediaplayer.prepare();
-            mediaplayer.start();
-
-
-        } catch (IllegalArgumentException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (SecurityException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IllegalStateException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-
-        if(isPlay == true)
+        if(isPlay.isSelected())
         {
-            mediaplayer.stop();
-        }
+            try {
 
+
+
+                    mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mediaplayer.reset();
+                    mediaplayer.setDataSource(pathofsong);
+                    mediaplayer.prepare();
+                    mediaplayer.start();
+
+
+            } catch (IllegalArgumentException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (SecurityException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IllegalStateException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            mediaplayer.pause();
+        }
 
     }
 
@@ -253,13 +255,13 @@ public void writeCat(String gen, String songnm, Uri downloaduri,String time,Stri
     }
 
 
-    public void contactInfo(String name,String email)
+    public void contactInfo(String name,String email,String pic)
     {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
 
         DatabaseReference usersReff = ref.child("Contacts").child("Artists");
-        usersReff.push().setValue(new Contacts(email,name));
+        usersReff.push().setValue(new Contacts(email,name,pic));
     }
 
     public void writeComments(String songname)

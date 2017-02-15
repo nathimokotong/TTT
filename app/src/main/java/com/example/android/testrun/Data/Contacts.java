@@ -8,12 +8,29 @@ public class Contacts {
 
     public String email;
     public String artist;
+    public String pictur;
 
 
-    public Contacts(String e,String n)
+
+    public Contacts()
+    {
+
+    }
+
+    public Contacts(String e,String n,String p)
     {
         email = e;
         artist = n;
+        pictur = p;
+    }
+
+
+    public String getPictur() {
+        return pictur;
+    }
+
+    public void setPictur(String pictur) {
+        this.pictur = pictur;
     }
 
     public String getEmail() {

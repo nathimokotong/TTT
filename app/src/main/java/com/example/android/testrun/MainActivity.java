@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements
                 MusicUplbtn.setClickable(false);
                 MusicRatBtn.setClickable(false);
                 SignBtn.setClickable(false);
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 
@@ -187,14 +187,15 @@ public class MainActivity extends AppCompatActivity implements
                 MusicUplbtn.setClickable(false);
                 MusicRatBtn.setClickable(false);
                 SignBtn.setClickable(false);
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 
                     }
                     @Override
                     public void onFinish() {
-
+                        Intent intent = new Intent(MainActivity.this,ContactArtist.class);
+                                startActivity(intent);
                     }
                 }.start();
             }
@@ -210,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements
                 MusicUplbtn.setClickable(false);
                 MusicRatBtn.setClickable(false);
                 SignBtn.setClickable(false);
-                timer = new CountDownTimer(3000,1000) {
+                timer = new CountDownTimer(1000,1000) {
                     @Override
                     public void onTick(long l) {
 

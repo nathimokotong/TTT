@@ -1,6 +1,7 @@
 package com.example.android.testrun;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,7 +34,7 @@ public class SignIN extends AppCompatActivity implements Button.OnClickListener 
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]
-
+        String piclink;
     // [START declare_auth_listener]
     private FirebaseAuth.AuthStateListener mAuthListener;
     // [END declare_auth_listener]
@@ -86,6 +87,13 @@ public class SignIN extends AppCompatActivity implements Button.OnClickListener 
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
+               //getting user picture
+                String personPhotoUrl = account.getPhotoUrl().toString();
+                SharedPreferences preferences = getSharedPreferences("User",0);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("picklink",piclink);
+                editor.commit();
+
                 bar.setVisibility(View.VISIBLE);
             } else {
                 // Google Sign In failed, update UI appropriately
