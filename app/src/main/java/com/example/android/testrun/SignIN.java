@@ -87,12 +87,11 @@ public class SignIN extends AppCompatActivity implements Button.OnClickListener 
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
+                //getting google email address
+                String adre = account.getEmail();
                //getting user picture
-                String personPhotoUrl = account.getPhotoUrl().toString();
-                SharedPreferences preferences = getSharedPreferences("User",0);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("picklink",piclink);
-                editor.commit();
+              //
+
 
                 bar.setVisibility(View.VISIBLE);
             } else {

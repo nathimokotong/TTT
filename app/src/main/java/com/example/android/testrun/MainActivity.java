@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements
     private FirebaseAuth.AuthStateListener mAuthListener;
     // [END declare_auth_listener]
     String username;
+    String userEmail;
+    String personPhotoUrl;
     private GoogleApiClient mGoogleApiClient;
     CountDownTimer timer = null;
 
@@ -139,6 +141,21 @@ public class MainActivity extends AppCompatActivity implements
                 if (user != null) {
 
                 username = user.getDisplayName();
+                    userEmail = user.getEmail();
+                    SharedPreferences preferences2 = getSharedPreferences("UserEmail",0);
+                    SharedPreferences.Editor editor2 = preferences2.edit();
+                    editor2.putString("yourEmail",userEmail);
+                    editor2.commit();
+                    personPhotoUrl = String.valueOf(user.getPhotoUrl());
+
+
+                    String personPhotoUrl = String.valueOf(user.getPhotoUrl());
+                    SharedPreferences preferences = getSharedPreferences("UserPhoto",0);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("picklink",personPhotoUrl);
+                    editor.commit();
+
+
                 } else {
 
                     Intent intent = new Intent(MainActivity.this, SignIN.class);
@@ -222,7 +239,10 @@ public class MainActivity extends AppCompatActivity implements
                         SharedPreferences preferences = getSharedPreferences("User",0);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("username",username);
+                      //  editor.putString("yourEmail",userEmail);
                         editor.commit();
+
+
 
                         Intent intent = new Intent(MainActivity.this,Uploadmusic.class);
                         startActivity(intent);
