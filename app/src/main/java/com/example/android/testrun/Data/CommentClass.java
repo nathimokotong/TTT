@@ -9,20 +9,15 @@ public class CommentClass {
     String user;
     String message;
     String timestamp;
+    String date;
 
 
-
-    public CommentClass()
-    {
-
-    }
-
-
-    public CommentClass(String u , String m ,String t)
+    public CommentClass(String u , String m ,String t, String d)
     {
         user = u;
         message = m;
         timestamp = t;
+        date = d;
     }
 
     public String getTimestamp() {
@@ -47,6 +42,19 @@ public class CommentClass {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public CommentClass()
+    {
+
     }
 
 

@@ -338,7 +338,7 @@ public class MainActivity extends AppCompatActivity implements
     private void updateUI(FirebaseUser user) {
 
         if (user != null) {
-         //   username = (TextView)findViewById(R.id.usernameTxt);
+         //   usern`ame = (TextView)findViewById(R.id.usernameTxt);
            // username.setText(user.getDisplayName());
         } else {
 

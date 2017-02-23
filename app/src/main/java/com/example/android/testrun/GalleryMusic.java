@@ -57,7 +57,7 @@ public class GalleryMusic extends AppCompatActivity {
         btntraditional.setClickable(true);
 
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.slide_down);
-        final Animation clic = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        final Animation clic = AnimationUtils.loadAnimation(this, R.anim.alpha);
 
         btnKwaito.startAnimation(myAnim);
         btnHipHop.startAnimation(myAnim);
