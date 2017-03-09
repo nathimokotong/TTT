@@ -80,20 +80,21 @@
 
                 <Button
                 android:id="@+id/Btnupload"
-                android:layout_width="170dp"
+                android:layout_width="match_parent"
                 android:layout_height="92dp"
                 android:drawableTop="@drawable/uploadmusicbtn"
                 android:text="@string/music_upload"
                     android:textColor="@color/colorwhite"
                 android:elevation="10dp"
+
                 android:background="@android:color/transparent"
                 android:layout_alignParentTop="true"
                 android:layout_alignEnd="@+id/Btnrating"
                 android:layout_marginTop="1dp"
-                    android:layout_weight="0.58" />
+                    android:layout_weight="1.05" />
 
                 <View
-                    android:layout_width="match_parent"
+                    android:layout_width="194dp"
                     android:layout_height="5dp"
                     android:background="@android:color/darker_gray"
                     android:layout_marginTop="19dp"
@@ -101,7 +102,7 @@
 
                 <Button
                     android:id="@+id/Btnrating"
-                    android:layout_width="170dp"
+                    android:layout_width="match_parent"
                     android:layout_height="92dp"
                     android:elevation="10dp"
                     android:textColor="@color/colorwhite"
@@ -109,7 +110,7 @@
                     android:background="@android:color/transparent"
                     android:text="@string/music_rating"
                     android:layout_marginTop="25dp"
-                    android:layout_weight="1"
+                    android:layout_weight="1.38"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
                    />
@@ -119,6 +120,7 @@
                 android:layout_width="5dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/darker_gray"
+
                 android:layout_marginTop="16dp"
 
                 android:id="@+id/view2" />
@@ -144,10 +146,11 @@
                     android:layout_weight="1" />
 
                 <View
-                    android:layout_width="match_parent"
+                    android:layout_width="181dp"
                     android:layout_height="5dp"
                     android:background="@android:color/darker_gray"
                     android:layout_marginTop="17dp"
+
                     />
 
                 <Button
